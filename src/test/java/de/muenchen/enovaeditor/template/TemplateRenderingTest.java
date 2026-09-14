@@ -70,4 +70,37 @@ public class TemplateRenderingTest {
         assertTrue(renderedHtml.contains("Schwabing"), "Should contain Grundbuchbezirk");
         assertTrue(renderedHtml.contains("412/5"), "Should contain Flurstück");
     }
+
+    @Test
+    void testOutputTemplateRendersCaseworkerSuccessfully() throws Exception {
+        File sampleFile = new File("samples/xjustiz_beispiel_2900003.xml");
+        XmlLoader xmlLoader = new XmlLoader();
+        Document doc = xmlLoader.load(sampleFile);
+
+        de.muenchen.enovaeditor.config.caseworker.CaseworkerConfigLoader loader =
+                new de.muenchen.enovaeditor.config.caseworker.CaseworkerConfigLoader();
+        var caseworkers = loader.load();
+        assertFalse(caseworkers.isEmpty(), "Caseworkers should be loaded from caseworkers.xml");
+        var antonia = caseworkers.stream().filter(c -> "Antonia".equals(c.name())).findFirst().orElseThrow();
+
+        de.muenchen.enovaeditor.decision.EnovaResponseTransformer transformer =
+                new de.muenchen.enovaeditor.decision.EnovaResponseTransformer();
+        Document responseDoc = transformer.transform(
+                doc,
+                "001",
+                "AZ-2026-ANTONIA",
+                "Gemeinde Hinterhugeldapfing",
+                antonia
+        );
+
+        String outputTemplate = Files.readString(Path.of("Output.htm"));
+        XPathTemplateRenderer renderer = new XPathTemplateRenderer();
+        String renderedHtml = renderer.render(outputTemplate, responseDoc);
+
+        assertNotNull(renderedHtml);
+        assertTrue(renderedHtml.contains("Antonia"), "Should contain caseworker vorname Antonia");
+        assertTrue(renderedHtml.contains("Allenthaler"), "Should contain caseworker nachname Allenthaler");
+        assertTrue(renderedHtml.contains("Gemeinde Hinterhugeldapfing"), "Should contain municipality name");
+        assertTrue(renderedHtml.contains("vorkaufsrecht@hinterhugeldapfing.de"), "Should contain caseworker email");
+    }
 }

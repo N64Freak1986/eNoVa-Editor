@@ -33,6 +33,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainController {
 
@@ -63,6 +65,9 @@ public class MainController {
 
     @FXML
     private ComboBox<CaseworkerEntry> caseworkerComboBox;
+ 
+    @FXML
+    private Label caseworkerDetailLabel;
 
     @FXML
     private ComboBox<CodelistEntry> decisionComboBox;
@@ -279,6 +284,8 @@ public class MainController {
                 return null;
             }
         });
+
+        caseworkerComboBox.valueProperty().addListener((obs, oldVal, newVal) -> updateCaseworkerDetail(newVal));
     }
 
     private void configureDecisionComboBox() {
@@ -360,9 +367,52 @@ public class MainController {
             }
             caseworkerComboBox.setPrefWidth(maxTextWidth + CASEWORKER_WIDTH_PADDING);
             caseworkerComboBox.getItems().addAll(caseworkerEntries);
+            if (!caseworkerEntries.isEmpty()) {
+                caseworkerComboBox.getSelectionModel().selectFirst();
+                updateCaseworkerDetail(caseworkerComboBox.getValue());
+            }
         } catch (IOException e) {
             showError("Sachbearbeiter-Konfiguration konnte nicht geladen werden", e.getMessage());
         }
+    }
+
+    private void updateCaseworkerDetail(CaseworkerEntry entry) {
+        if (caseworkerDetailLabel == null) {
+            return;
+        }
+        if (entry == null || entry.xmlBlock() == null || entry.xmlBlock().isBlank()) {
+            caseworkerDetailLabel.setText("");
+            return;
+        }
+
+        String xml = entry.xmlBlock();
+        String vorname = extractTag(xml, "vorname");
+        String nachname = extractTag(xml, "nachname");
+        String zusatz = extractTag(xml, "anschriftenzusatz");
+        String verbindung = extractTag(xml, "verbindung");
+
+        StringBuilder sb = new StringBuilder();
+        if (!vorname.isEmpty() || !nachname.isEmpty()) {
+            sb.append("👤 ").append(vorname).append(" ").append(nachname);
+        }
+        if (!zusatz.isEmpty()) {
+            if (!sb.isEmpty()) sb.append(" • ");
+            sb.append(zusatz);
+        }
+        if (!verbindung.isEmpty()) {
+            if (!sb.isEmpty()) sb.append(" • ");
+            sb.append(verbindung);
+        }
+        caseworkerDetailLabel.setText(sb.toString().trim());
+    }
+
+    private String extractTag(String xml, String tagName) {
+        Pattern pattern = Pattern.compile("<(?:[\\w.-]+:)?" + tagName + "[^>]*>(.*?)</(?:[\\w.-]+:)?" + tagName + ">", Pattern.DOTALL);
+        Matcher matcher = pattern.matcher(xml);
+        if (matcher.find()) {
+            return matcher.group(1).trim();
+        }
+        return "";
     }
 
     private void loadDecisions() {
@@ -380,7 +430,13 @@ public class MainController {
 
     private void clearDecisionFields() {
         fileNumber.clear();
-        caseworkerComboBox.setValue(null);
+        if (!caseworkerComboBox.getItems().isEmpty()) {
+            caseworkerComboBox.getSelectionModel().selectFirst();
+            updateCaseworkerDetail(caseworkerComboBox.getValue());
+        } else {
+            caseworkerComboBox.setValue(null);
+            if (caseworkerDetailLabel != null) caseworkerDetailLabel.setText("");
+        }
         decisionComboBox.setValue(null);
         if (previewButton != null) previewButton.setDisable(true);
         if (exportButton != null) exportButton.setDisable(true);

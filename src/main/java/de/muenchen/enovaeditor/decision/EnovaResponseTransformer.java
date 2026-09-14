@@ -163,13 +163,11 @@ public class EnovaResponseTransformer {
             }
         }
 
-        if (!attachedCaseworker) {
-            Element partner = doc.createElementNS(XJUSTIZ_NAMESPACE, TNS_PREFIX + ":auswahl_kommunikationspartner");
-            Element sonstige = doc.createElementNS(XJUSTIZ_NAMESPACE, TNS_PREFIX + ":sonstige");
-            sonstige.setTextContent(senderName != null && !senderName.isBlank() ? senderName : "Kommune / Bauamt");
-            partner.appendChild(sonstige);
-            info.appendChild(partner);
-        }
+        Element partner = doc.createElementNS(XJUSTIZ_NAMESPACE, TNS_PREFIX + ":auswahl_kommunikationspartner");
+        Element sonstige = doc.createElementNS(XJUSTIZ_NAMESPACE, TNS_PREFIX + ":sonstige");
+        sonstige.setTextContent(senderName != null && !senderName.isBlank() ? senderName : "Kommune / Bauamt");
+        partner.appendChild(sonstige);
+        info.appendChild(partner);
 
         newAbsender.appendChild(info);
         root.appendChild(newAbsender);

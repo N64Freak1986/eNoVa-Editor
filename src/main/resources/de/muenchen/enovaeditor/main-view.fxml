@@ -81,10 +81,14 @@
             <Label text="Sachbearbeiter auswählen:"
                    GridPane.columnIndex="0"
                    GridPane.rowIndex="2"/>
-            <ComboBox
-                    fx:id="caseworkerComboBox"
-                    GridPane.columnIndex="1"
-                    GridPane.rowIndex="2"/>
+            <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <ComboBox
+                        fx:id="caseworkerComboBox"
+                        minWidth="200.0"/>
+                <Label fx:id="caseworkerDetailLabel"
+                       text=""
+                       style="-fx-font-size: 11px; -fx-text-fill: #475569;"/>
+            </VBox>
 
             <Label text="Entscheidung:"
                    GridPane.columnIndex="0"
