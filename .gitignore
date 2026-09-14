@@ -44,3 +44,6 @@ build/
 *-sachentscheidung-*.xml
 260713*.pdf
 installer/dist/
+*.zip
+landingpage_mockup*.html
+implementation_plan.md

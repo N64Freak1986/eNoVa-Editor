@@ -42,4 +42,32 @@ public class TemplateRenderingTest {
         assertFalse(renderedHtml.contains("Johannes|"), "Should not contain pipe glyph");
         assertFalse(renderedHtml.contains("Erika|"), "Should not contain pipe glyph");
     }
+
+    @Test
+    void testOutputTemplateRendersSuccessfully() throws Exception {
+        File sampleFile = new File("samples/xjustiz_beispiel_2900003.xml");
+        XmlLoader xmlLoader = new XmlLoader();
+        Document doc = xmlLoader.load(sampleFile);
+
+        de.muenchen.enovaeditor.decision.EnovaResponseTransformer transformer =
+                new de.muenchen.enovaeditor.decision.EnovaResponseTransformer();
+        Document responseDoc = transformer.transform(
+                doc,
+                "002",
+                "61-VKR-2026/0815",
+                "Landeshauptstadt München",
+                null
+        );
+
+        String outputTemplate = Files.readString(Path.of("Output.htm"));
+        XPathTemplateRenderer renderer = new XPathTemplateRenderer();
+        String renderedHtml = renderer.render(outputTemplate, responseDoc);
+
+        assertNotNull(renderedHtml);
+        assertTrue(renderedHtml.contains("BESCHEID"), "Should contain BESCHEID header");
+        assertTrue(renderedHtml.contains("61-VKR-2026/0815"), "Should contain Aktenzeichen");
+        assertTrue(renderedHtml.contains("815 / 2026"), "Should contain Urkunden-Nr");
+        assertTrue(renderedHtml.contains("Schwabing"), "Should contain Grundbuchbezirk");
+        assertTrue(renderedHtml.contains("412/5"), "Should contain Flurstück");
+    }
 }
