@@ -1,5 +1,5 @@
 @startuml
-title eNoVa-Editor – Fachassistent-Ablauf (XJustiz 2900003 & 2900004)
+title eNoVa-Editor – Fachassistent-Ablauf (XJustiz eNoVA 2900003)
 
 start
 
@@ -7,11 +7,12 @@ partition "JavaFX-Anwendung" {
     :EnovaEditorApplication startet;
     :Bildschirmgröße ermitteln & Fenster zentrieren;
     :main-view.fxml wird geladen;
-    :caseworkers.xml einlesen;
+    :caseworkers.xml einlesen (schemafreie CDATA-Fragmente);
+    :codelists/ENOVA.Sachentscheidung einlesen (Genericode);
 }
 
 partition "MainController" {
-    :Eingangsdaten laden (Drag & Drop / Dateidialog / CLI-Parameter);
+    :Eingangsdaten laden (Dateidialog / Musterdaten);
 }
 
 if (XML-Datei ausgewählt?) then (ja)
@@ -26,41 +27,32 @@ if (XML-Datei ausgewählt?) then (ja)
         endif
     }
 
-    partition "XPathTemplateRenderer & WebView" {
+    partition "TemplateLoader & XPathTemplateRenderer" {
         :Input.htm einlesen & rendern;
-        :HTML direkt im Anwendungsfenster anzeigen (Tab "Notaranfrage");
-        :Verfahrens- & Urkundendaten für Entscheidungsmaske extrahieren;
-        :Aktenzeichen-Vorschlag ableiten;
+        :HTML im Standard-Browser öffnen;
     }
 
     partition "Sachbearbeitung (Entscheidungserfassung)" {
         :Sachbearbeiter(in) auswählen;
-        :Art der Sachentscheidung wählen (BauGB § 28, §§ 144/145, §§ 172/173);
-        :Tenor, Begründung und Gebühr prüfen / anpassen;
-        :Bescheid-Entwurf live in Tab 2 aktualisieren (BescheidHtmlRenderer);
+        :Aktenzeichen der Kommune erfassen;
+        :Art der Sachentscheidung wählen (aus Genericode-Codeliste);
     }
 
-    partition "Export für beBPo & Veraktung" {
-        :Benutzer klickt "beBPo-Paket exportieren";
-        
-        fork
-            :EnovaResponseBuilder erzeugt\nnachricht.enova.entscheidung.2900004.xml;
+    partition "Antwort & Export" {
+        if (Aktion?) then (Vorschau)
+            :EnovaResponseTransformer transformiert 2900003 Ersuchen in Sachentscheidung;
+            :Output.htm Template rendern & im Browser anzeigen;
+        else (Export)
+            :EnovaResponseTransformer transformiert 2900003;
+            :nachricht.enova.entscheidung.2900003.xml speichern;
+            :Output.htm Bescheid speichern;
             note right
                 Bereit zur qualifizierten
                 Signatur (qeS / CAdES detached)
                 für die Rückübermittlung via beBPo
             end note
-        fork again
-            :BescheidPdfGenerator erzeugt\nAmtlichen Bescheid (DIN-A4 PDF);
-            note right
-                Druckreifes Dokument
-                zur behördlichen Veraktung
-                (DMS / E-Akte)
-            end note
-        end fork
-        
-        :Erfolgsmeldung anzeigen;
-        :Optional: Zielordner im Windows Explorer öffnen;
+            :Erfolgsmeldung anzeigen;
+        endif
     }
 
 else (nein)
