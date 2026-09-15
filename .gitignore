@@ -46,5 +46,5 @@ build/
 installer/dist/
 *.zip
 landingpage_mockup*.html
-*n12h*.html
+*n12h*
 implementation_plan.md
