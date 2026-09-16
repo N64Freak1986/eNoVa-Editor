@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N12h Digital – Premium-Support & Enterprise-Rollout für den eNoVa-Editor</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* N12h Digital Corporate Identity */
+    :root {
+      --n12h-navy: #1F2F40;
+      --n12h-cyan: #4AC3FF;
+      --n12h-bg: #FAFAFA;
+      --n12h-gray: #808080;
+      --n12h-black: #000000;
+    }
+
+    body {
+      background-color: #FAFAFA;
+      color: #4B5563;
+      font-family: 'Polli Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+
+    /* Selection matching N12h website */
+    ::selection {
+      background: #1F2F40;
+      color: #4AC3FF;
+    }
+    ::-moz-selection {
+      background: #1F2F40;
+      color: #4AC3FF;
+    }
+
+    /* N12h Iconic Buttons (30px border radius) */
+    .btn-n12h-cyan {
+      background-color: #4AC3FF;
+      color: #000000;
+      font-weight: 700;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-n12h-cyan:hover {
+      background-color: #1F2F40;
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .btn-n12h-navy {
+      background-color: #1F2F40;
+      color: #FFFFFF;
+      font-weight: 700;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-n12h-navy:hover {
+      background-color: #4AC3FF;
+      color: #000000;
+      transform: translateY(-1px);
+    }
+
+    .btn-n12h-white {
+      background-color: #FFFFFF;
+      color: #000000;
+      font-weight: 700;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-n12h-white:hover {
+      background-color: #1F2F40;
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    /* Bluebox Styling */
+    .n12h-bluebox {
+      background-color: #4AC3FF;
+      color: #000000;
+    }
+
+    /* Hover cards */
+    .n12h-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .n12h-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(31, 47, 64, 0.08);
+      border-color: #4AC3FF;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F2F40;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4AC3FF;
+    }
+  </style>
+</head>
+<body class="antialiased font-sans">
+
+  <!-- Top Announcement Bar in N12h Navy & Cyan -->
+  <aside class="bg-[#1F2F40] text-white text-xs sm:text-sm py-2.5 px-4 border-b border-[#2C3E50]">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 mx-auto sm:mx-0">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#4AC3FF] text-[#000000] tracking-wide uppercase">
+          Frist 01.01.2027
+        </span>
+        <span class="text-slate-200">
+          <strong>Gesetzliche eNoVA-Pflicht für Kommunen:</strong> Sind Ihre Bau- & Liegenschaftsämter beBPo-startklar?
+        </span>
+      </div>
+      <div class="hidden lg:flex items-center gap-6 text-xs text-slate-300">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#4AC3FF]"></span>
+          XJustiz 2900003 konform
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          100% DSGVO & On-Premise
+        </span>
+        <a href="tel:071136084370" class="text-[#4AC3FF] hover:underline font-bold flex items-center gap-1">
+          📞 0711 36084370
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-2xl bg-[#1F2F40] flex items-center justify-center font-extrabold text-white text-xl shadow-md group-hover:bg-[#15222e] transition-colors relative">
+          <span>n12</span>
+          <span class="w-2 h-2 rounded-full bg-[#4AC3FF] absolute top-2 right-2"></span>
+        </div>
+        <div>
+          <div class="font-extrabold text-xl tracking-tight text-[#000000] flex items-center gap-1.5">
+            n12h<span class="text-[#4AC3FF]">.digital</span>
+            <span class="text-gray-300 text-sm font-normal">|</span>
+            <span class="text-[11px] uppercase tracking-wider px-2 py-0.5 bg-gray-100 border border-gray-200 rounded-md text-[#1F2F40] font-bold">
+              Public Sector
+            </span>
+          </div>
+          <div class="text-xs text-[#808080] font-medium">eNoVa-Editor Enterprise & Behördensupport</div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-[15px] font-semibold text-[#1F2F40]">
+        <a href="#vorteile" class="hover:text-[#4AC3FF] transition-colors">Vorteile</a>
+        <a href="#pakete" class="hover:text-[#4AC3FF] transition-colors">Support-Pakete</a>
+        <a href="#kalkulator" class="hover:text-[#4AC3FF] transition-colors">Kalkulator</a>
+        <a href="#workflow" class="hover:text-[#4AC3FF] transition-colors">beBPo-Workflow</a>
+        <a href="#faq" class="hover:text-[#4AC3FF] transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Header Action -->
+      <div class="flex items-center gap-3">
+        <a href="tel:071136084370" class="hidden sm:inline-flex text-xs font-bold text-[#1F2F40] bg-gray-100 hover:bg-gray-200 items-center gap-2 px-3.5 py-2.5 rounded-full transition-all">
+          <svg class="w-4 h-4 text-[#4AC3FF]" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+          0711 36084370
+        </a>
+        <a href="#kontakt" class="btn-n12h-cyan text-sm px-5 py-2.5 shadow-sm">
+          Gespräch anfragen
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION in Original N12h Dark Navy (#1F2F40) with Iconic Cyan Bluebox (#4AC3FF) -->
+  <section class="bg-[#1F2F40] text-white pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden relative border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Column: Claim & Introduction -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C3E50] border border-[#3E546C] text-[#4AC3FF] text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-[#4AC3FF] animate-pulse"></span>
+            Schlüsselfertiger Rollout & Support für Städte & Gemeinden
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
+            Ins Tun kommen:<br/>
+            <span class="text-[#4AC3FF]">Ihr eNoVa-Umsetzungspartner.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+            Open Source trifft kommunale Verlässlichkeit: Die <strong>N12h Digital</strong> macht den eNoVa-Editor der Stadt München fit für Ihren behördlichen Alltag. Mit <strong>Zero-Admin-Installation</strong>, maßgeschneiderten Bescheid-Vorlagen, beBPo-Export und festem SLA.
+          </p>
+
+          <!-- Metrics Row -->
+          <div class="grid grid-cols-3 gap-3 pt-2 max-w-md">
+            <div class="p-3.5 rounded-2xl bg-[#283A4C] border border-[#3E546C]/60 text-center sm:text-left">
+              <div class="text-2xl font-black text-[#4AC3FF]">100%</div>
+              <div class="text-xs text-slate-300 font-medium mt-0.5">XJustiz 2900003</div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#283A4C] border border-[#3E546C]/60 text-center sm:text-left">
+              <div class="text-2xl font-black text-emerald-400">&lt; 3 Min.</div>
+              <div class="text-xs text-slate-300 font-medium mt-0.5">Bearbeitungszeit</div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#283A4C] border border-[#3E546C]/60 text-center sm:text-left">
+              <div class="text-2xl font-black text-white">0 Admin</div>
+              <div class="text-xs text-slate-300 font-medium mt-0.5">Keine IT-Tickets</div>
+            </div>
+          </div>
+
+          <!-- Trust Subline -->
+          <div class="pt-2 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-400">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Konform zur Bundesnotarkammer (BNotK)
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              BauGB § 24 ff. Vorkaufsrecht
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Basis: Open Source der Stadt München
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Iconic N12h BLUEBOX (#4AC3FF) -->
+        <div class="lg:col-span-5">
+          <div class="n12h-bluebox p-8 sm:p-10 rounded-3xl shadow-2xl space-y-6 relative overflow-hidden">
+            
+            <!-- Phone header inside Bluebox -->
+            <div class="flex items-center justify-between border-b border-black/15 pb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-black/70">Direktkontakt</span>
+              <a href="tel:071136084370" class="text-lg font-bold text-black hover:opacity-80 transition-opacity flex items-center gap-2">
+                <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                0711 36084370
+              </a>
+            </div>
+
+            <!-- Big Bluebox Punchline -->
+            <div class="text-3xl sm:text-4xl font-black text-black leading-tight tracking-tight">
+              Endlich im<br/>
+              Work-Flow.<br/>
+              <span class="font-normal text-2xl sm:text-3xl block mt-1">Wir digitalisieren Ihre Vorkaufsrechts-Prozesse.</span>
+            </div>
+
+            <p class="text-sm text-black/85 leading-relaxed font-medium">
+              Kein langwieriges IT-Projekt: In weniger als 48 Stunden stellen wir Ihrer Verwaltung den schlüsselfertig vorkonfigurierten eNoVa-Editor mit Wappen, Siegel und Schulung bereit.
+            </p>
+
+            <!-- White Button inside Bluebox matching N12h CSS -->
+            <div class="pt-2">
+              <a href="https://bookings.cloud.microsoft/bookwithme/user/a39e0b4bbed648c09d44d3dc50a85fb2%40n12h.digital?anonymous&ismsaljsauthenabled" target="_blank" class="btn-n12h-white w-full py-4 px-6 text-base shadow-lg">
+                Beratungsgespräch vereinbaren &rarr;
+              </a>
+              <div class="text-[11px] text-center text-black/70 mt-2.5 font-semibold">
+                Kostenlos & unverbindlich • Direkt mit Nicolas & Team
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARTNER / TRUST LOGOS SECTION -->
+  <section class="py-10 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="text-xs uppercase tracking-widest font-bold text-[#808080] mb-6">
+        Erprobte Digitalisierungsexpertise für den öffentlichen Sektor
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-75 grayscale hover:grayscale-0 transition-all">
+        <span class="font-black text-xl text-[#1F2F40]">Stadt Biberach</span>
+        <span class="font-black text-xl text-[#1F2F40]">WashTec</span>
+        <span class="font-black text-xl text-[#1F2F40]">TheoLorch</span>
+        <span class="font-black text-xl text-[#1F2F40]">Leitwerk</span>
+        <span class="font-black text-xl text-[#1F2F40]">Kommunalpartner BW & Bayern</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM VS. SOLUTION SECTION in Fresh Light Theme -->
+  <section id="vorteile" class="py-20 bg-[#FAFAFA] border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs uppercase tracking-wider font-extrabold text-[#4AC3FF] bg-[#1F2F40] px-3.5 py-1 rounded-full">
+          Warum N12h Digital?
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#000000] tracking-tight">
+          Warum reines Open Source für die Verwaltung nicht ausreicht
+        </h2>
+        <p class="text-base text-[#808080]">
+          Das IT-Referat München hat mit dem eNoVa-Editor ein exzellentes Werkzeug geschaffen. Doch für den echten Produktivbetrieb in Ihrer Kommune braucht es mehr:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Pain Card: Reines Open Source -->
+        <div class="bg-white p-8 sm:p-10 rounded-3xl border border-red-200/80 shadow-sm space-y-5 relative">
+          <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-xl">
+            ✕
+          </div>
+          <h3 class="text-2xl font-bold text-[#000000]">Reiner Open-Source-Download</h3>
+          <p class="text-sm text-[#808080] leading-relaxed">
+            Ohne Implementierungspartner bleibt der Aufwand vollständig bei Ihrer internen IT hängen:
+          </p>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 font-bold shrink-0">✕</span>
+              <span><strong>Kein Setup-Installer:</strong> Kompilierung aus Quellcode erforderlich, blockiert IT-Ressourcen.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 font-bold shrink-0">✕</span>
+              <span><strong>Rohdateien ohne Wappen:</strong> Bescheid-Layouts müssen mühsam von Hand per HTML/CSS editiert werden.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 font-bold shrink-0">✕</span>
+              <span><strong>Kein Ansprechpartner bei beBPo-Fehlern:</strong> Rückweisungen von Notariaten erfordern zeitraubende Fehlersuche.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 font-bold shrink-0">✕</span>
+              <span><strong>Null Haftung & kein SLA:</strong> Keine garantierte Unterstützung bei Fristsachen (§ 28 BauGB 3-Monats-Frist).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Solution Card: N12h Enterprise Support -->
+        <div class="bg-white p-8 sm:p-10 rounded-3xl border-2 border-[#4AC3FF] shadow-lg space-y-5 relative">
+          <div class="w-12 h-12 rounded-2xl bg-[#4AC3FF]/20 text-[#1F2F40] flex items-center justify-center font-bold text-xl">
+            ✓
+          </div>
+          <div class="inline-block px-3 py-0.5 rounded-full text-xs font-extrabold bg-[#1F2F40] text-[#4AC3FF] uppercase tracking-wider">
+            Rundum-Sorglos-Paket
+          </div>
+          <h3 class="text-2xl font-bold text-[#000000]">N12h Enterprise Behördensupport</h3>
+          <p class="text-sm text-[#808080] leading-relaxed">
+            Schlüsselfertiger Betrieb, der Ihre Sachbearbeiter entlastet und Ihrer IT keine Arbeit macht:
+          </p>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <span><strong>Windows Zero-Admin Installer:</strong> Direkte Installation ohne Admin-Rechte, integrierte abgesicherte Java-Runtime.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <span><strong>Amtliches Bescheid-Layout:</strong> Ihr Wappen, Dienstsiegel, behördlicher Briefkopf und Gebührensatzung fertig konfiguriert.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <span><strong>Feste SLA & Reaktionszeit:</strong> Persönlicher Support per Telefon und E-Mail (Stuttgart).</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <span><strong>XJustiz Update-Garantie:</strong> Laufende Anpassung an alle Justiz- und Notarkammer-Änderungen.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE ROI CALCULATOR in N12h Light + Navy/Cyan Accents -->
+  <section id="kalkulator" class="py-20 bg-white border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+        <span class="text-xs uppercase tracking-wider font-extrabold text-[#4AC3FF] bg-[#1F2F40] px-3.5 py-1 rounded-full">
+          ROI & Zeitersparnis
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#000000] tracking-tight">
+          Interaktiver Amts-Entlastungsrechner
+        </h2>
+        <p class="text-sm text-[#808080]">
+          Berechnen Sie, wie viele Stunden und Kosten Ihre Bauverwaltung durch die strukturierte digitale Abwicklung gegenüber papierhafter Bearbeitung pro Monat spart:
+        </p>
+      </div>
+
+      <div class="bg-[#FAFAFA] border border-gray-300 rounded-3xl p-8 sm:p-10 shadow-md">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          
+          <div class="md:col-span-7 space-y-5">
+            <h4 class="text-xl font-bold text-[#000000]">
+              Wie viele Vorkaufsrechtsanfragen erhält Ihre Kommune pro Monat?
+            </h4>
+            <p class="text-xs text-[#808080] leading-relaxed">
+              Traditionelle Bearbeitung (Prüfung, Aktenabgleich, Erstellung Bescheid im Word/DMS, Post/Signatur): ca. 45 Minuten pro Fall. Mit dem vorkonfigurierten eNoVa-Editor: <strong>unter 3 Minuten</strong>.
+            </p>
+
+            <div class="space-y-3 pt-2">
+              <div class="flex justify-between items-center text-sm font-bold">
+                <span class="text-[#1F2F40]">Monatliche Notaranfragen:</span>
+                <span class="text-xl font-black text-[#1F2F40] bg-[#4AC3FF]/20 px-3 py-1 rounded-full" id="slider-val">
+                  40 Anfragen
+                </span>
+              </div>
+              <input type="range" min="5" max="250" value="40" step="5" id="request-slider" oninput="updateRoi()" 
+                     class="w-full h-2.5 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-[#1F2F40]">
+              <div class="flex justify-between text-[11px] text-[#808080]">
+                <span>5 (Kleine Gemeinde)</span>
+                <span>100 (Große Kreisstadt)</span>
+                <span>250+ (Großstadt)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-5 bg-[#1F2F40] text-white p-7 rounded-3xl text-center space-y-5 shadow-xl">
+            <div>
+              <div class="text-xs uppercase font-bold text-[#4AC3FF] tracking-wider">Ersparte Amtsarbeitszeit / Monat</div>
+              <div class="text-3xl sm:text-4xl font-black text-white mt-1" id="roi-hours">28 Stunden</div>
+            </div>
+            <div class="pt-4 border-t border-[#3E546C]">
+              <div class="text-xs uppercase font-bold text-[#4AC3FF] tracking-wider">Monatlicher Wertvorteil</div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1" id="roi-savings">ca. 1.820 €</div>
+              <div class="text-[11px] text-slate-400 mt-1">(Basis: 65 €/h Personalkostensatz TVöD VKA)</div>
+            </div>
+            <a href="#kontakt" class="btn-n12h-cyan w-full py-3 text-sm">
+              Jetzt Entlastung starten
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUPPORT PACKAGES & PRICING in Clean N12h Aesthetics -->
+  <section id="pakete" class="py-20 bg-[#FAFAFA] border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <span class="text-xs uppercase tracking-wider font-extrabold text-[#4AC3FF] bg-[#1F2F40] px-3.5 py-1 rounded-full">
+          Transparente Konditionen
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#000000] tracking-tight">
+          Flexible Support- & Rollout-Pakete für jedes Amt
+        </h2>
+        <p class="text-base text-[#808080]">
+          Feste EVB-IT Konditionen, keine versteckten Kosten und jährliche Kündbarkeit. Wählen Sie Ihre Gemeindegröße:
+        </p>
+
+        <!-- Municipality Size Switcher -->
+        <div class="inline-flex p-1.5 rounded-full bg-gray-200 border border-gray-300 gap-1 mt-4">
+          <button onclick="switchTier('small')" id="btn-small" class="px-5 py-2 rounded-full font-bold text-xs bg-[#1F2F40] text-white shadow-sm transition-all">
+            Gemeinde (&lt; 25k Einw.)
+          </button>
+          <button onclick="switchTier('medium')" id="btn-medium" class="px-5 py-2 rounded-full font-bold text-xs text-[#1F2F40] hover:bg-gray-300 transition-all">
+            Stadt / Kreis (25k – 100k)
+          </button>
+          <button onclick="switchTier('large')" id="btn-large" class="px-5 py-2 rounded-full font-bold text-xs text-[#1F2F40] hover:bg-gray-300 transition-all">
+            Großstadt (&gt; 100k)
+          </button>
+        </div>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Package 1: Onboarding Starter -->
+        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col justify-between n12h-card">
+          <div class="space-y-6">
+            <div>
+              <span class="text-xs uppercase font-extrabold text-[#1F2F40] tracking-wider bg-gray-100 px-3 py-1 rounded-full">
+                Einmaliger Rollout
+              </span>
+              <h3 class="text-2xl font-extrabold text-[#000000] mt-3">Kommune Onboarding</h3>
+              <p class="text-xs text-[#808080] mt-1.5">Schlüsselfertige Bereitstellung: Wir machen Ihren eNoVa-Editor einsatzbereit.</p>
+            </div>
+
+            <div class="py-4 border-y border-gray-100">
+              <div class="text-3xl font-black text-[#1F2F40]" id="price-starter">1.490 €</div>
+              <div class="text-xs text-[#808080] mt-1">einmaliger Festpreis zzgl. MwSt. (EVB-IT)</div>
+            </div>
+
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Vorkonfigurierter Windows-Installer (Zero-Admin)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Einbindung von Wappen, Dienstsiegel & Gebührensatzung</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Konfiguration von bis zu <strong id="seats-starter">3 Sachbearbeitern</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>2 Std. Online-Schulung für Ihre Sachbearbeiter</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>4 Wochen telefonischer Anlaufsupport</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-8">
+            <a href="#kontakt" class="btn-n12h-navy w-full py-3.5 text-sm">
+              Starter anfragen
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 2: SLA Pro (Highlight Card) -->
+        <div class="bg-[#1F2F40] text-white p-8 rounded-3xl border-2 border-[#4AC3FF] shadow-xl flex flex-col justify-between relative transform lg:-translate-y-2 n12h-card">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#4AC3FF] text-[#000000] text-xs font-black uppercase tracking-wider shadow">
+            Empfehlung für Ämter
+          </div>
+
+          <div class="space-y-6">
+            <div>
+              <span class="text-xs uppercase font-extrabold text-[#4AC3FF] tracking-wider">
+                Laufender Premium-Support
+              </span>
+              <h3 class="text-2xl font-extrabold text-white mt-3">Kommune SLA Pro</h3>
+              <p class="text-xs text-slate-300 mt-1.5">Sorgenfreie Abwicklung mit Update-Garantie und persönlicher Behörden-Hotline.</p>
+            </div>
+
+            <div class="py-4 border-y border-[#3E546C]">
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-black text-[#4AC3FF]" id="price-pro">249 €</span>
+                <span class="text-sm text-slate-300">/ Monat</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">jährliche Abrechnung zzgl. MwSt.</div>
+            </div>
+
+            <ul class="space-y-3 text-sm text-slate-200">
+              <li class="flex items-start gap-2.5 font-bold text-white">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Inklusive allem aus dem Onboarding-Paket</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span><strong>Garantierte 8h Reaktionszeit</strong> (Next Business Day)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span><strong>Update-Garantie:</strong> Automatische Anpassung bei BNotK & XJustiz Schema-Updates</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Hotline & E-Mail-Support für bis zu <strong id="seats-pro">10 Arbeitsplätze</strong></span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Signatur-Troubleshooting (Governikus, Chipkarten, Siegel)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Jährlicher Vorlagen-Check für Gebührenanpassungen</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-8">
+            <a href="#kontakt" class="btn-n12h-cyan w-full py-4 text-base shadow-lg">
+              Jetzt SLA Pro sichern
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 3: Enterprise & DMS -->
+        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col justify-between n12h-card">
+          <div class="space-y-6">
+            <div>
+              <span class="text-xs uppercase font-extrabold text-[#1F2F40] tracking-wider bg-gray-100 px-3 py-1 rounded-full">
+                Großstädte & Rechenzentren
+              </span>
+              <h3 class="text-2xl font-extrabold text-[#000000] mt-3">Enterprise & DMS</h3>
+              <p class="text-xs text-[#808080] mt-1.5">Maßgeschneiderte Integration, Multi-Mandant und 4h Express-SLA.</p>
+            </div>
+
+            <div class="py-4 border-y border-gray-100">
+              <div class="text-3xl font-black text-[#1F2F40]" id="price-enterprise">Individuell</div>
+              <div class="text-xs text-[#808080] mt-1" id="enterprise-sub">nach Fachverfahren & Arbeitsplätzen</div>
+            </div>
+
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span><strong>4h Express SLA</strong> mit priorisierter Notfall-Hotline</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Anbindung an E-Akte / DMS (komXwork, d.velop, CC e-gov)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Unbegrenzte Sachbearbeiter-Profile & Mandanten</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Dedizierter Behörden-Account-Manager (Nicolas & Team)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-[#4AC3FF] font-black text-base">✓</span>
+                <span>Vor-Ort-Workshop für IT- & Liegenschaftsreferate</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-8">
+            <a href="#kontakt" class="btn-n12h-navy w-full py-3.5 text-sm">
+              Enterprise anfragen
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BEBPO & WORKFLOW ARCHITECTURE SECTION -->
+  <section id="workflow" class="py-20 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs uppercase tracking-wider font-extrabold text-[#4AC3FF] bg-[#1F2F40] px-3.5 py-1 rounded-full">
+            beBPo-Prozess
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#000000] tracking-tight leading-tight">
+            Der behördliche eNoVA-Workflow – einfach & 100% DSGVO-konform
+          </h2>
+          <p class="text-base text-[#808080] leading-relaxed">
+            Grundstückskaufverträge enthalten hochsensible Kaufpreise und persönliche Finanzdaten. Mit dem eNoVa-Editor verlassen die Daten zu keinem Zeitpunkt Ihr Haus: <strong>100% offline, kein Cloud-Zwang, reine On-Premise-Verarbeitung.</strong>
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="p-4 rounded-2xl bg-[#FAFAFA] border border-gray-200 flex items-start gap-3.5">
+              <div class="w-8 h-8 rounded-full bg-[#4AC3FF] text-black flex items-center justify-center font-bold text-sm shrink-0">1</div>
+              <div>
+                <h4 class="text-sm font-bold text-[#000000]">Eingang via beBPo / EGVP</h4>
+                <p class="text-xs text-[#808080] mt-0.5">Das Notariat übermittelt das Ersuchen um Sachentscheidung (XJustiz 2900003) über das besondere elektronische Behördenpostfach.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#FAFAFA] border border-gray-200 flex items-start gap-3.5">
+              <div class="w-8 h-8 rounded-full bg-[#1F2F40] text-white flex items-center justify-center font-bold text-sm shrink-0">2</div>
+              <div>
+                <h4 class="text-sm font-bold text-[#000000]">Prüfung & Entscheidung im eNoVa-Editor</h4>
+                <p class="text-xs text-[#808080] mt-0.5">Automatisches Einlesen der Flurstücke, Parteien und Grundbuchdaten. Auswahl der Sachentscheidung (z.B. Negativzeugnis 002) in Sekunden.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#FAFAFA] border border-gray-200 flex items-start gap-3.5">
+              <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shrink-0">3</div>
+              <div>
+                <h4 class="text-sm font-bold text-[#000000]">1-Klick-Export & Rücksendung</h4>
+                <p class="text-xs text-[#808080] mt-0.5">Generierung der Antwort-XML (2900003) und des druckfertigen Bescheids. Signatur per Dienstsiegel/qeS und beBPo-Rückübermittlung an den Notar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-[#1F2F40] p-8 sm:p-10 rounded-3xl text-white space-y-6 shadow-xl">
+          <div class="flex items-center justify-between border-b border-[#3E546C] pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#4AC3FF]">Sicherheits-Checkliste</span>
+            <span class="text-xs text-slate-300 font-semibold">Stand: XJustiz 3.6.2 (2026/2027)</span>
+          </div>
+
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <div>
+                <strong class="text-white block">Reiner Offline-Betrieb (Air-Gapped fähig)</strong>
+                <span class="text-slate-300 text-xs">Keine Serververbindungen zu Dritten, keine Telemetrie, keine Cloud-Zwänge.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <div>
+                <strong class="text-white block">Strikte XJustiz-2900003-Validierung</strong>
+                <span class="text-slate-300 text-xs">Garantiert fehlerfreier Notariats-Import in Notar 4.0, TriNotar, XNotar und BNotK-Systemen.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <div>
+                <strong class="text-white block">Kompatibel mit Governikus & SAFE</strong>
+                <span class="text-slate-300 text-xs">Nahtloses Zusammenspiel mit Govello, Governikus Communicator und Dienstsiegel-Karten.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-[#4AC3FF] font-bold text-base shrink-0">✓</span>
+              <div>
+                <strong class="text-white block">Rechtssicher nach EVB-IT</strong>
+                <span class="text-slate-300 text-xs">Beschaffungskonforme Verträge nach den Standards der Bundesverwaltung.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#283A4C] border border-[#3E546C] text-xs text-slate-300 leading-relaxed">
+            <strong class="text-[#4AC3FF]">N12h Garantie:</strong> Wir begleiten Ihren ersten beBPo-Echtfall persönlich, bis die Rückmeldebestätigung des Notariats vorliegt.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION in Clean Accordion Style -->
+  <section id="faq" class="py-20 bg-[#FAFAFA] border-b border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-14 space-y-3">
+        <span class="text-xs uppercase tracking-wider font-extrabold text-[#4AC3FF] bg-[#1F2F40] px-3.5 py-1 rounded-full">
+          FAQ
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#000000] tracking-tight">
+          Häufige Fragen von Hauptämtern & Liegenschaftsreferaten
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm cursor-pointer transition-colors hover:border-[#4AC3FF]" onclick="toggleFaq(1)">
+          <div class="flex justify-between items-center">
+            <h4 class="text-base font-bold text-[#000000]">Ist der eNoVa-Editor nicht bereits Open Source und kostenlos?</h4>
+            <span class="text-xl font-bold text-[#1F2F40]" id="faq-icon-1">+</span>
+          </div>
+          <div class="mt-3 text-sm text-[#808080] leading-relaxed hidden" id="faq-body-1">
+            Ja, die Basissoftware wurde vom IT-Referat der Landeshauptstadt München (it-at-m) als Open Source veröffentlicht. Reines Open Source bedeutet jedoch: kein telefonischer Support, keine Haftung, keine Bereitstellung von schlüsselfertigen Windows-Installern ohne Adminrechte, keine Anpassung an gemeindespezifische Satzungen und kein Signatursupport bei beBPo-Problemen. N12h schließt diese Lücke für Kommunen, die einen verlässlichen Dienstleister mit festem SLA benötigen.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm cursor-pointer transition-colors hover:border-[#4AC3FF]" onclick="toggleFaq(2)">
+          <div class="flex justify-between items-center">
+            <h4 class="text-base font-bold text-[#000000]">Benötigen unsere Sachbearbeiter lokale Administrator-Rechte für die Installation?</h4>
+            <span class="text-xl font-bold text-[#1F2F40]" id="faq-icon-2">+</span>
+          </div>
+          <div class="mt-3 text-sm text-[#808080] leading-relaxed hidden" id="faq-body-2">
+            Nein! Unser Windows-Setup installiert die Anwendung standardmäßig ins geschützte Benutzerprofil des jeweiligen Mitarbeiters (<code class="text-[#1F2F40] bg-gray-100 px-1 py-0.5 rounded">LocalAppData</code>) und bringt eine integrierte, abgesicherte Java-Laufzeitumgebung mit. Ihre zentrale IT muss weder Java freigeben noch Tickets bearbeiten.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm cursor-pointer transition-colors hover:border-[#4AC3FF]" onclick="toggleFaq(3)">
+          <div class="flex justify-between items-center">
+            <h4 class="text-base font-bold text-[#000000]">Was geschieht bei Änderungen am XJustiz-Standard bis zum 01.01.2027?</h4>
+            <span class="text-xl font-bold text-[#1F2F40]" id="faq-icon-3">+</span>
+          </div>
+          <div class="mt-3 text-sm text-[#808080] leading-relaxed hidden" id="faq-body-3">
+            Im Rahmen unserer SLA-Wartungsverträge beobachten wir alle Veröffentlichungen der Bund-Länder-Kommission (BLK) und der BNotK. Ändern sich Schemadefinitionen (z.B. der Übergang auf Version 4.1.0 im April 2027), erhalten Sie von uns rechtzeitig ein getestetes Update, bevor die Änderungen in Kraft treten.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm cursor-pointer transition-colors hover:border-[#4AC3FF]" onclick="toggleFaq(4)">
+          <div class="flex justify-between items-center">
+            <h4 class="text-base font-bold text-[#000000]">Können wir die Beschaffung vergaberechtskonform über EVB-IT abwickeln?</h4>
+            <span class="text-xl font-bold text-[#1F2F40]" id="faq-icon-4">+</span>
+          </div>
+          <div class="mt-3 text-sm text-[#808080] leading-relaxed hidden" id="faq-body-4">
+            Selbstverständlich. Unsere Angebote und Verträge basieren auf den standardisierten EVB-IT Dienstleistungs- und Pflegeverträgen der öffentlichen Hand, sodass Ihr Haupt- oder Vergabeamt die Beauftragung rechtssicher und unkompliziert freigeben kann.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm cursor-pointer transition-colors hover:border-[#4AC3FF]" onclick="toggleFaq(5)">
+          <div class="flex justify-between items-center">
+            <h4 class="text-base font-bold text-[#000000]">Wie läuft eine Teststellung oder Live-Demonstration ab?</h4>
+            <span class="text-xl font-bold text-[#1F2F40]" id="faq-icon-5">+</span>
+          </div>
+          <div class="mt-3 text-sm text-[#808080] leading-relaxed hidden" id="faq-body-5">
+            Wir führen Ihnen und Ihrem Liegenschaftsamt den eNoVa-Editor gerne in einem 30-minütigen Video-Call an echten Musterfällen vor. Im Anschluss stellen wir Ihnen ein unverbindliches Testpaket für bis zu 14 Tage zur Verfügung.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT & CONSULTATION SECTION -->
+  <section id="kontakt" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs uppercase tracking-wider font-extrabold text-[#4AC3FF] bg-[#1F2F40] px-3.5 py-1 rounded-full">
+            Persönlicher Ansprechpartner
+          </span>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#000000] tracking-tight">
+            Sichern Sie sich jetzt Ihren Beratungstermin
+          </h2>
+
+          <p class="text-base text-[#808080] leading-relaxed">
+            Sprechen Sie direkt mit unserem Public-Sector-Team rund um Nicolas. Wir analysieren Ihre aktuelle Vorkaufsrechts-Situation und zeigen Ihnen, wie Sie den eNoVa-Editor sofort produktiv nutzen können.
+          </p>
+
+          <div class="p-6 rounded-3xl bg-[#FAFAFA] border border-gray-200 space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-[#1F2F40] text-[#4AC3FF] font-black text-xl flex items-center justify-center">
+                ND
+              </div>
+              <div>
+                <h4 class="text-base font-bold text-[#000000]">N12h Digital GmbH</h4>
+                <p class="text-xs text-[#808080]">Public Sector & Behördenberatung</p>
+                <a href="tel:071136084370" class="text-sm font-bold text-[#1F2F40] hover:text-[#4AC3FF] mt-0.5 block">
+                  📞 0711 36084370
+                </a>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-gray-200 text-xs text-[#808080] space-y-1.5">
+              <div>📍 <strong>Standort:</strong> Region Stuttgart / Baden-Württemberg</div>
+              <div>✉️ <strong>E-Mail:</strong> kontakt@n12h.digital</div>
+              <div>⏱️ <strong>Reaktionszeit:</strong> Rückmeldung innerhalb von 4 Stunden</div>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <a href="https://bookings.cloud.microsoft/bookwithme/user/a39e0b4bbed648c09d44d3dc50a85fb2%40n12h.digital?anonymous&ismsaljsauthenabled" target="_blank" class="btn-n12h-cyan w-full py-4 text-base shadow-md">
+              Direkt im Kalender buchen &rarr;
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="lg:col-span-7 bg-[#FAFAFA] p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-sm space-y-6">
+          <h3 class="text-2xl font-bold text-[#000000]">Unverbindliche Anfrage senden</h3>
+          
+          <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-[#1F2F40] uppercase tracking-wider mb-1">Kommune / Behörde *</label>
+                <input type="text" required placeholder="z.B. Stadt Biberach" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#4AC3FF] focus:ring-2 focus:ring-[#4AC3FF]/20 bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[#1F2F40] uppercase tracking-wider mb-1">Einwohnerzahl</label>
+                <select class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#4AC3FF] focus:ring-2 focus:ring-[#4AC3FF]/20 bg-white">
+                  <option>&lt; 10.000 Einwohner</option>
+                  <option selected>10.000 – 50.000 Einwohner</option>
+                  <option>50.000 – 100.000 Einwohner</option>
+                  <option>&gt; 100.000 Einwohner</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-[#1F2F40] uppercase tracking-wider mb-1">Ansprechpartner / Name *</label>
+                <input type="text" required placeholder="Vor- und Nachname" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#4AC3FF] focus:ring-2 focus:ring-[#4AC3FF]/20 bg-white">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-[#1F2F40] uppercase tracking-wider mb-1">Dienstliche E-Mail *</label>
+                <input type="email" required placeholder="amtsleitung@kommune.de" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#4AC3FF] focus:ring-2 focus:ring-[#4AC3FF]/20 bg-white">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-[#1F2F40] uppercase tracking-wider mb-1">Telefonnummer für Rückfragen</label>
+              <input type="tel" placeholder="0711 ..." class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#4AC3FF] focus:ring-2 focus:ring-[#4AC3FF]/20 bg-white">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-[#1F2F40] uppercase tracking-wider mb-1">Gewünschtes Interesse</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#1F2F40]">
+                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gray-200 bg-white cursor-pointer hover:border-[#4AC3FF]">
+                  <input type="checkbox" checked class="accent-[#4AC3FF]">
+                  <span>Onboarding & Rollout-Paket</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gray-200 bg-white cursor-pointer hover:border-[#4AC3FF]">
+                  <input type="checkbox" checked class="accent-[#4AC3FF]">
+                  <span>Laufender SLA Pro Support</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gray-200 bg-white cursor-pointer hover:border-[#4AC3FF]">
+                  <input type="checkbox" class="accent-[#4AC3FF]">
+                  <span>14-Tage Teststellung anfordern</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gray-200 bg-white cursor-pointer hover:border-[#4AC3FF]">
+                  <input type="checkbox" class="accent-[#4AC3FF]">
+                  <span>DMS / E-Akte Anbindung</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-[#1F2F40] uppercase tracking-wider mb-1">Nachricht / Besonderheiten</label>
+              <textarea rows="3" placeholder="Ihre Nachricht oder spezielle Fachverfahren..." class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#4AC3FF] focus:ring-2 focus:ring-[#4AC3FF]/20 bg-white"></textarea>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="btn-n12h-navy w-full py-4 text-base shadow-md">
+                Unverbindliche Anfrage absenden &rarr;
+              </button>
+            </div>
+            
+            <div id="form-feedback" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold text-center">
+              Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 4 Stunden bei Ihnen.
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER in Original N12h Deep Navy (#1F2F40) -->
+  <footer class="bg-[#1F2F40] text-slate-300 py-12 border-t border-gray-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#3E546C] pb-8">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-[#4AC3FF] text-[#000000] font-black text-base flex items-center justify-center">
+            n12
+          </div>
+          <span class="font-bold text-base text-white">n12h.digital GmbH</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#vorteile" class="hover:text-[#4AC3FF] transition-colors">Vorteile</a>
+          <a href="#pakete" class="hover:text-[#4AC3FF] transition-colors">Pakete</a>
+          <a href="#kalkulator" class="hover:text-[#4AC3FF] transition-colors">Kalkulator</a>
+          <a href="#workflow" class="hover:text-[#4AC3FF] transition-colors">Workflow</a>
+          <a href="tel:071136084370" class="text-[#4AC3FF] font-bold">0711 36084370</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400">
+        <div>
+          © 2026 N12h Digital GmbH. Alle Rechte vorbehalten. Ihr Implementierungspartner für eNoVa & Formcycle.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://www.n12h.digital/impressum" target="_blank" class="hover:underline">Impressum</a>
+          <a href="https://www.n12h.digital/datenschutz" target="_blank" class="hover:underline">Datenschutz</a>
+          <a href="#top" class="text-[#4AC3FF] hover:underline font-bold">↑ Nach oben</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR INTERACTIVITY -->
+  <script>
+    // Package data per municipality tier
+    const tiers = {
+      small: {
+        starter: "1.490 €",
+        starterSeats: "3 Sachbearbeitern",
+        pro: "249 €",
+        proSeats: "5 Arbeitsplätze",
+        enterprise: "Individuell",
+        enterpriseSub: "ab 1 Fachverfahren"
+      },
+      medium: {
+        starter: "2.490 €",
+        starterSeats: "8 Sachbearbeitern",
+        pro: "449 €",
+        proSeats: "15 Arbeitsplätze",
+        enterprise: "Individuell",
+        enterpriseSub: "inkl. E-Akte-Kopplung"
+      },
+      large: {
+        starter: "4.900 €",
+        starterSeats: "Unbegrenzt",
+        pro: "890 €",
+        proSeats: "30+ Arbeitsplätze",
+        enterprise: "Auf Anfrage",
+        enterpriseSub: "Multi-Mandant & Rechenzentrum"
+      }
+    };
+
+    function switchTier(tier) {
+      document.getElementById('price-starter').innerText = tiers[tier].starter;
+      document.getElementById('seats-starter').innerText = tiers[tier].starterSeats;
+      document.getElementById('price-pro').innerText = tiers[tier].pro;
+      document.getElementById('seats-pro').innerText = tiers[tier].proSeats;
+      document.getElementById('price-enterprise').innerText = tiers[tier].enterprise;
+      document.getElementById('enterprise-sub').innerText = tiers[tier].enterpriseSub;
+
+      // Update button styling
+      const buttons = ['small', 'medium', 'large'];
+      buttons.forEach(b => {
+        const btn = document.getElementById('btn-' + b);
+        if (b === tier) {
+          btn.className = "px-5 py-2 rounded-full font-bold text-xs bg-[#1F2F40] text-white shadow-sm transition-all";
+        } else {
+          btn.className = "px-5 py-2 rounded-full font-bold text-xs text-[#1F2F40] hover:bg-gray-300 transition-all";
+        }
+      });
+    }
+
+    // ROI Calculator calculation
+    function updateRoi() {
+      const val = parseInt(document.getElementById('request-slider').value);
+      document.getElementById('slider-val').innerText = val + " Anfragen";
+
+      // 42 minutes saved per case = 0.7 hours
+      const hoursSaved = Math.round(val * 0.7);
+      document.getElementById('roi-hours').innerText = hoursSaved + " Stunden";
+
+      // TVöD VKA cost: 65 € per hour
+      const savings = Math.round(hoursSaved * 65);
+      document.getElementById('roi-savings').innerText = "ca. " + savings.toLocaleString('de-DE') + " €";
+    }
+
+    // FAQ Accordion
+    function toggleFaq(index) {
+      const body = document.getElementById('faq-body-' + index);
+      const icon = document.getElementById('faq-icon-' + index);
+      if (body.classList.contains('hidden')) {
+        body.classList.remove('hidden');
+        icon.innerText = '−';
+      } else {
+        body.classList.add('hidden');
+        icon.innerText = '+';
+      }
+    }
+
+    // Form Submission Feedback
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const feedback = document.getElementById('form-feedback');
+      feedback.classList.remove('hidden');
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>
