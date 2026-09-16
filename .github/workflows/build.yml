@@ -1,0 +1,86 @@
+﻿name: CI & Distribution Build
+
+on:
+  push:
+    branches:
+      - feature/sachentscheidung-und-bebpo-assistent
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run unit tests
+        run: |
+          chmod +x mvnw
+          ./mvnw clean test
+
+  build-macos:
+    name: Build macOS Package
+    needs: test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build macOS distribution image
+        run: |
+          chmod +x mvnw
+          ./mvnw package -DskipTests -Pdist
+
+      - name: Make launcher executable
+        run: |
+          chmod +x target/distribution/eNoVa-editor/eNoVa-editor.command || true
+          chmod +x target/distribution/eNoVa-editor/app/bin/* || true
+          cd target/distribution
+          zip -r ../eNoVa-Editor-macOS.zip eNoVa-editor
+
+      - name: Upload macOS Distribution Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eNoVa-Editor-macOS
+          path: target/eNoVa-Editor-macOS.zip
+
+  build-windows:
+    name: Build Windows Package
+    needs: test
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build Windows distribution
+        run: |
+          .\mvnw.cmd package -DskipTests -Pdist
+
+      - name: Upload Windows Distribution Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eNoVa-Editor-Windows
+          path: target/eNoVa-editor-*.zip
